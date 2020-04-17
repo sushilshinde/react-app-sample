@@ -29,9 +29,6 @@ jobs:
     - run: npm test
       env:
         CI: true
-    - name: Lint Action
-      uses: samuelmeuli/lint-action@v1.4.0
-      
     
 
 
