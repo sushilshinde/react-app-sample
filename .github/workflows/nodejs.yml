@@ -30,4 +30,6 @@ jobs:
       env:
         CI: true
     - name: Lighthouse Audit
-    - uses: jakejarvis/lighthouse-action@v0.3.2
+      uses: jakejarvis/lighthouse-action@v0.3.2
+  
+
