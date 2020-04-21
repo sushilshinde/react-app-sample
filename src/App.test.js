@@ -6,4 +6,5 @@ test('renders learn react link', () => {
   const { getByText } = render(<App />);
   const linkElement = getByText(/learn react12/i);
   expect(linkElement).toBeInTheDocument();
+  ;
 });
