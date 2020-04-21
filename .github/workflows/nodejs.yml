@@ -23,7 +23,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          msg: ${{'@'}}${{github.actor}} your PR is failing the test 
+          msg: ${{toJson(job)}} your PR is failing the test 
+          #msg: ${{'@'}}${{github.actor}} your PR is failing the test 
           check_for_duplicate_msg: false  # OPTIONAL 
     - name: The job has failed
       uses: actions/github-script@0.9.0
