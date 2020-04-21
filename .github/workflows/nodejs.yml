@@ -17,22 +17,24 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm test && export FOO=TESTSUCCCES && echo "::set-env name=FOO::$FOO"
-    - name: comment PR
+    - name: PR failed
       uses: unsplash/comment-on-pr@master
       if: failure()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          msg: ${{toJson(job)}} your PR is failing the test 
-          #msg: ${{'@'}}${{github.actor}} your PR is failing the test 
+          #msg: ${{toJson(job)}} your PR is failing the test 
+          msg: ${{'@'}}${{github.actor}} your PR is failing the test, please fix
           check_for_duplicate_msg: false  # OPTIONAL 
-    - name: The job has failed
-      uses: actions/github-script@0.9.0
-      if: failure()
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          console.log(process.env.FOO)
-      
+      - name: PR failed
+        uses: unsplash/comment-on-pr@master
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          #msg: ${{toJson(job)}} your PR is failing the test 
+          msg: Thanks ${{'@'}}${{github.actor}}
+          check_for_duplicate_msg: false  # OPTIONAL 
+          
 
 
