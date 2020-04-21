@@ -26,13 +26,13 @@ jobs:
           #msg: ${{toJson(job)}} your PR is failing the test 
           msg: ${{'@'}}${{github.actor}} your PR is failing the test, please fix
           check_for_duplicate_msg: false  # OPTIONAL 
-      - name: PR Passed
-        uses: unsplash/comment-on-pr@master
-        if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          #msg: ${{toJson(job)}} your PR is failing the test 
+    - name: PR Passed
+      uses: unsplash/comment-on-pr@master
+      if: success()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        #msg: ${{toJson(job)}} your PR is failing the test 
           msg: Thanks ${{'@'}}${{github.actor}}
           check_for_duplicate_msg: false  # OPTIONAL 
           
