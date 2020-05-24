@@ -27,7 +27,7 @@ jobs:
           msg: ${{'@'}}${{github.actor}} your PR is failing the test/build, please fix
           check_for_duplicate_msg: false  # OPTIONAL 
     - name: PR Passed
-      uses: unsplash/comment-on-pr@master
+      uses: sushilshinde/comment-on-pr@master
       if: success()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
